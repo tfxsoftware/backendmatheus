@@ -1,14 +1,28 @@
-import http from "http";
+import express from "express";
+import cors from "cors";
+import itemsR from "./routers/items-router";
 
-export const server = http.createServer((req, res) => {
-  res.writeHead(200, { "Content-type": "application/json" });
-  res.end(
-    JSON.stringify({
-      data: "It works...",
-    }),
-  );
+const PORT = 4000;
+const HOSTNAME = "http://localhost";
+
+// Instantiate express
+const app = express();
+app.use(cors());
+app.use(express.json());
+//app.use(express.urlencoded({ extended: true }));
+app.use("/api", itemsR);
+
+// Default endpoint /
+app.get("/", (req, res) => {
+  res.send("Welcome!");
 });
 
-server.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+// Default response
+app.use((req, res) => {
+  res.status(404);
+});
+
+// Start server
+app.listen(PORT, () => {
+  console.log(`Server running: ${HOSTNAME}:${PORT}`);
 });
