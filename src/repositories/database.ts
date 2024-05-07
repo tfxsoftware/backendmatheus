@@ -10,8 +10,8 @@ const DDL_SCRIPT = `
     CREATE TABLE contas (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
         conta TEXT,
-        agencia TEXT,
-        
+        agencia TEXT
+
     )`;
 const database = new sqlite3.Database(DBSOURCE, (err) => {
   if (err) {
@@ -21,9 +21,9 @@ const database = new sqlite3.Database(DBSOURCE, (err) => {
     console.log("Database connected.");
     database.run(DDL_SCRIPT, (err) => {
       if (err) {
-        console.log("Table items already exists.");
+        console.log(err);
       } else {
-        console.log("Table items created.");
+        console.log("Table contas created.");
       }
     });
   }
