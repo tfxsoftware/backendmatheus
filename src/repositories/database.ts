@@ -7,10 +7,11 @@ const DBSOURCE = "db.sqlite";
  * sendo: 0 => false e 1 => true.
  */
 const DDL_SCRIPT = `
-    CREATE TABLE items (
+    CREATE TABLE contas (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
-        description TEXT,
-        checked INTEGER
+        conta TEXT,
+        agencia TEXT,
+        
     )`;
 const database = new sqlite3.Database(DBSOURCE, (err) => {
   if (err) {

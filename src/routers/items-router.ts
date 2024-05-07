@@ -1,6 +1,6 @@
 import express from "express";
-import Item from "../models/Item";
-import itemsRepository from "../repositories/items-repository";
+import Item from "../models/Conta";
+import itemsRepository from "../repositories/contas-repository";
 
 const itemsR = express.Router();
 
